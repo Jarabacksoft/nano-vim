@@ -1,0 +1,5 @@
+/nano-vim
+/nano-vim-*
+
+.DS_Store
+__pycache__/
