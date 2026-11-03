@@ -7,6 +7,112 @@ při rozporu platí česká verze.
 
 ## Česky
 
+### Licence
+
+Vlastní kód a projektová dokumentace: **Apache License 2.0**, copyright 2026 Petr Turek.
+Viz [LICENSE](LICENSE), [licenční přehled](LICENSING.cs.md) a
+[oznámení třetích stran](THIRD_PARTY_NOTICES.txt). Pro distribuci binárky použijte
+`python3 scripts/package-release.py /private/tmp/nano-vim-release`.
+Autoritativní licenční text je anglický; český přehled je vysvětlení.
+
+### Instalace
+
+Podporovaný je **macOS a Linux**, případně Linux ve **Windows přes WSL**.
+Nativní Windows build zatím není podporovaný. Potřebujete **Go 1.26.1 nebo novější**
+a interaktivní terminál. Pokud Go už máte, přeskočte přípravu a přejděte rovnou k instalaci nano-vim.
+
+#### 1. Připravte Go podle svého systému
+
+Verzi ověříte příkazem:
+
+```sh
+go version
+```
+
+**macOS s Homebrew:**
+
+```sh
+brew install go
+```
+
+Homebrew zde instaluje Go, nikoli nano-vim. Pokud Homebrew nepoužíváte,
+nainstalujte Go přímo přes [oficiální instalátor pro macOS](https://go.dev/doc/install);
+není nutné kvůli nano-vim zavádět dalšího správce balíčků.
+
+**Linux — Ubuntu / Debian:**
+
+```sh
+sudo apt update
+sudo apt install golang-go
+```
+
+Potom znovu ověřte `go version`. Verze dostupná přes APT závisí na vydání distribuce.
+Pokud je starší než 1.26.1, nebo používáte jinou distribuci, postupujte podle
+[oficiálního návodu Go pro Linux](https://go.dev/doc/install) a zvolte balíček pro svou architekturu.
+Některé verze Go mohou potřebný novější toolchain stáhnout automaticky; pokud to
+vaše prostředí zakazuje, nainstalujte požadovanou verzi Go samostatně.
+
+**Windows — WSL:**
+
+Pokud WSL ještě nemáte, otevřete **PowerShell jako správce** a spusťte:
+
+```powershell
+wsl --install
+```
+
+Dokončete průvodce, vytvořte uživatele Linuxu a restartujte, pokud o to systém požádá.
+Další kroky provádějte v **linuxovém terminálu WSL**, nikoli v PowerShellu.
+Pro Ubuntu ve WSL použijte linuxový postup výše.
+Podrobnosti: [oficiální návod Microsoftu](https://learn.microsoft.com/en-us/windows/wsl/install).
+WSL není nativní Windows aplikace; běží v něm linuxová varianta nano-vim.
+
+#### 2. Nainstalujte nano-vim
+
+Na macOS, Linuxu nebo uvnitř WSL spusťte:
+
+```sh
+go install github.com/Jarabacksoft/nano-vim@latest
+```
+
+Příkaz stáhne a sestaví nejnovější dostupnou verzi z veřejného repozitáře;
+repozitář nemusíte ručně klonovat. Nepotřebuje `sudo`. Závislosti se stahují při
+instalaci; hotový editor síť nepotřebuje. Jde o instalaci ze zdrojového kódu přes Go,
+nikoli samostatný Homebrew/APT balíček nano-vim nebo stažení hotové binárky.
+
+#### 3. Otevřete soubor
+
+```sh
+nano-vim "soubor.txt"
+```
+
+Editor očekává právě jeden název souboru. Mezery v názvu uzavřete do uvozovek.
+Nový soubor začne prázdný a vytvoří se při uložení. Začínáte v režimu Normal:
+`i` přejde na psaní, `Esc` se vrátí do režimu příkazů, `:wq` a Enter uloží a ukončí.
+Ukončení bez uložení je `:q!` a Enter.
+
+#### Když terminál nano-vim nenajde
+
+Go ukládá programy do `GOBIN`, pokud je nastavený; jinak obvykle do
+`$(go env GOPATH)/bin`. Výchozí adresář přidáte do `PATH` aktuálního terminálu takto:
+
+```sh
+export PATH="$PATH:$(go env GOPATH)/bin"
+```
+
+Pro trvalé nastavení přidejte tento řádek do konfigurace svého shellu, například
+`~/.zshrc` na Macu se zsh nebo `~/.bashrc` s bashem, a otevřete nový terminál.
+Pokud používáte vlastní `GOBIN`, přidejte místo výchozí cesty ten; jeho hodnotu
+zjistíte přes `go env GOBIN`. Pokud `go` není dostupné vůbec, dokončete nejdříve
+oficiální instalaci Go a otevřete nový terminál.
+
+#### Aktualizace a odinstalování
+
+Aktualizace používá stejný příkaz `go install ...@latest` uvedený výše.
+Pro odinstalování odeberte pouze binárku `nano-vim` z instalačního adresáře;
+není nutné odstraňovat Go, jeho cache ani jiné programy. Nano-vim nemá službu
+na pozadí ani vlastní konfigurační adresář. Před odstraněním ověřte skutečnou
+cestu přes `command -v nano-vim` a podle nastavení `GOBIN`/`GOPATH`.
+
 ### Sestavení a spuštění
 
 Potřebujete Go 1.26.1 nebo novější a unixový terminál (macOS nebo Linux).
@@ -121,12 +227,14 @@ go vet ./...
 go test -fuzz=FuzzKeys -fuzztime=15s
 go build -o nano-vim .
 python3 tests/terminal_test.py
+python3 tests/package_release_test.py
 ```
 
 Python test používá standardní knihovnu a skutečné PTY. Ověřuje úpravy, uložení
 CRLF, hledání, chráněné ukončení, šipky, výběr, změnu velikosti, vložení textu,
 čísla řádků, skoky, signály a obnovu terminálu. Go testy pokrývají příkazy,
 textové objekty, historii, Unicode, integritu souborů, neplatné vstupy a vykreslení.
+Test balení ověřuje odmítnutí chybějících licenčních textů a umístění licence Go v Homebrew.
 
 ### Známá omezení
 
@@ -146,6 +254,110 @@ Linux a schránka či zobrazení ve fyzickém terminálu stále vyžadují ručn
 A terminal editor that knows Vim, but minds its own business. By Jarabacksoft.
 **Czech is the primary and authoritative project language.** This section is a
 translation; the Czech version takes precedence if the two differ.
+
+### Licensing
+
+Own code and project documentation: **Apache License 2.0**, copyright 2026 Petr Turek.
+See [LICENSE](LICENSE), the [licensing overview](LICENSING.en.md), and
+[third-party notices](THIRD_PARTY_NOTICES.txt). For binary redistribution use
+`python3 scripts/package-release.py /private/tmp/nano-vim-release`.
+The English license text is authoritative; the Czech overview is explanatory.
+
+### Installation
+
+Supported environments are **macOS and Linux**, including Linux on **Windows through WSL**.
+A native Windows build is not supported yet. You need **Go 1.26.1 or newer**
+and an interactive terminal. If Go is already installed, skip setup and install nano-vim directly.
+
+#### 1. Set up Go for your operating system
+
+Check your version:
+
+```sh
+go version
+```
+
+**macOS with Homebrew:**
+
+```sh
+brew install go
+```
+
+Homebrew installs Go here, not nano-vim. If you do not use Homebrew,
+use the [official Go installer for macOS](https://go.dev/doc/install);
+there is no need to add another package manager just for nano-vim.
+
+**Linux — Ubuntu / Debian:**
+
+```sh
+sudo apt update
+sudo apt install golang-go
+```
+
+Check `go version` again. APT's Go version depends on the distribution release.
+If it is older than 1.26.1, or you use another distribution, follow the
+[official Go instructions for Linux](https://go.dev/doc/install) and choose your architecture.
+Some Go versions can download a newer required toolchain automatically; if your
+environment disables that, install the required Go version separately.
+
+**Windows — WSL:**
+
+If WSL is not installed, open **PowerShell as administrator** and run:
+
+```powershell
+wsl --install
+```
+
+Finish setup, create your Linux user account and restart if requested.
+Continue in your **WSL Linux terminal**, not PowerShell. For Ubuntu in WSL,
+follow the Linux steps above. Details: [Microsoft's official guide](https://learn.microsoft.com/en-us/windows/wsl/install).
+WSL runs the Linux version of nano-vim; this is not a native Windows app.
+
+#### 2. Install nano-vim
+
+On macOS, Linux or inside WSL, run:
+
+```sh
+go install github.com/Jarabacksoft/nano-vim@latest
+```
+
+This downloads and builds the latest available version from the public repository;
+no manual clone is needed. It does not require `sudo`. Dependencies are downloaded
+during installation; the installed editor works offline. This is a Go source
+installation, not a dedicated Homebrew/APT package or prebuilt binary download.
+
+#### 3. Open a file
+
+```sh
+nano-vim "file.txt"
+```
+
+Supply exactly one filename; quote filenames containing spaces. A missing file
+starts empty and is created on save. Startup uses Normal mode: `i` starts typing,
+`Esc` returns to command mode, and `:wq` followed by Enter saves and quits.
+To quit without saving, use `:q!` followed by Enter.
+
+#### If your terminal cannot find nano-vim
+
+Go installs executables into `GOBIN` when configured, otherwise normally into
+`$(go env GOPATH)/bin`. Add the default directory to the current terminal's `PATH`:
+
+```sh
+export PATH="$PATH:$(go env GOPATH)/bin"
+```
+
+To make this permanent, add the line to your shell configuration, such as `~/.zshrc`
+for zsh on macOS or `~/.bashrc` for bash, and open a new terminal. If you use a custom
+`GOBIN`, add that directory instead; inspect it with `go env GOBIN`. If `go` itself
+is unavailable, finish the official Go installation first and open a new terminal.
+
+#### Updating and uninstalling
+
+Update with the same `go install ...@latest` command shown above. To uninstall,
+remove only the `nano-vim` executable from its install directory; you do not need
+to remove Go, its cache or other tools. Nano-vim has no background service or own
+configuration directory. Before removing anything, inspect the actual location
+with `command -v nano-vim` and your `GOBIN`/`GOPATH` settings.
 
 ### Build and run
 
@@ -259,12 +471,14 @@ go vet ./...
 go test -fuzz=FuzzKeys -fuzztime=15s
 go build -o nano-vim .
 python3 tests/terminal_test.py
+python3 tests/package_release_test.py
 ```
 
 The Python test uses the standard library and real PTYs to check editing, CRLF saving,
 search, protected quit, arrows, selection, resizing, pasted text, line numbers,
 jumps, signals, and restoration. Go tests cover commands, text objects, history,
 Unicode, file integrity, invalid input, and rendering.
+Packaging tests check rejection of missing license texts and the Homebrew Go license location.
 
 ### Known limits
 
