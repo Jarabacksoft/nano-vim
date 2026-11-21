@@ -41,6 +41,17 @@ def verify_licenses(parser, directory, notices, identity, runtime=False):
             )
 
 
+def copy_identity_assets(root, bundle):
+    identity = root / "Brand" / "AppIcon"
+    receipt = json.loads((identity / "identity.json").read_text(encoding="utf-8"))
+    if receipt.get("app", {}).get("slug") != "nano-vim":
+        raise ValueError("Nesprávná identita / Incorrect product identity")
+    for variant in receipt["variants"]:
+        if not (identity / "svg" / f"{variant}.svg").is_file():
+            raise FileNotFoundError(f"Chybí ikona / Missing icon: {variant}")
+    shutil.copytree(root / "Brand", bundle / "Brand")
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("destination", type=Path)
@@ -86,6 +97,7 @@ def main():
         )
         for name in FILES:
             shutil.copy2(root / name, bundle / name)
+        copy_identity_assets(root, bundle)
         destination.parent.mkdir(parents=True, exist_ok=True)
         shutil.copytree(bundle, destination)
     print(f"Balíček vytvořen / Package created: {destination}")

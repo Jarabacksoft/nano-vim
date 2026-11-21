@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="icon-nano-vim-badge-light-title">
+  <title id="icon-nano-vim-badge-light-title">nano-vim — badge-light</title>
+  <defs>
+    <linearGradient id="icon-nano-vim-badge-light-base" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ffffff"/><stop offset="1" stop-color="#e9ebf0"/></linearGradient>
+    <linearGradient id="icon-nano-vim-badge-light-edge" x1="0" y1="0" x2=".6" y2="1"><stop stop-color="#fff" stop-opacity=".8"/><stop offset=".45" stop-color="#fff" stop-opacity=".04"/><stop offset="1" stop-color="#a3a9b6" stop-opacity=".4"/></linearGradient>
+    <linearGradient id="icon-nano-vim-badge-light-glass" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#fff" stop-opacity=".7"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+    <filter id="icon-nano-vim-badge-light-shadow" x="-.5" y="-.5" width="2" height="2"><feDropShadow dx="0" dy="5" stdDeviation="4" flood-color="#000" flood-opacity=".12"/></filter>
+  </defs>
+  <g id="icon-nano-vim-badge-light-background">
+    <rect x="8" y="10" width="240" height="240" rx="57" fill="#c9cdd5"/>
+    <rect x="8" y="6" width="240" height="240" rx="57" fill="url(#icon-nano-vim-badge-light-base)" stroke="#d5d9e0" stroke-width="1.5"/>
+    <rect x="10" y="8" width="236" height="236" rx="55" fill="none" stroke="url(#icon-nano-vim-badge-light-edge)" stroke-width="2"/>
+  </g>
+  <g id="icon-nano-vim-badge-light-material"><rect x="30" y="28" width="196" height="196" rx="42" fill="url(#icon-nano-vim-badge-light-glass)"/><path d="M30 63C35 39 50 28 76 28H179" fill="none" stroke="#fff" stroke-opacity=".3" stroke-width="1.5" stroke-linecap="round"/></g>
+  <g id="icon-nano-vim-badge-light-symbol" color="#24262e" fill="none" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" filter="url(#icon-nano-vim-badge-light-shadow)"><path d="M84 98L110 122L84 146"/><path d="M129 151H172"/></g>
+  <g id="icon-nano-vim-badge-light-badge"><circle cx="204" cy="204" r="18" fill="#fff"/><circle cx="204" cy="204" r="14" fill="#3578ef"/><path d="M197 197C200 194 205 193 210 196" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-opacity=".5"/></g>
+</svg>

@@ -73,5 +73,35 @@ class LicenseTests(unittest.TestCase):
         self.verify("Go license\nGo patents", runtime=True)
 
 
+class IdentityPackagingTests(unittest.TestCase):
+    def test_release_includes_the_documented_shared_icon_and_source_receipt(self):
+        import json
+        root = SCRIPT.parents[1]
+        with tempfile.TemporaryDirectory() as directory:
+            bundle = Path(directory)
+            PACKAGE.copy_identity_assets(root, bundle)
+            identity = bundle / "Brand/AppIcon"
+            receipt = json.loads((identity / "identity.json").read_text())
+            self.assertEqual(receipt["app"]["slug"], "nano-vim")
+            for variant in receipt["variants"]:
+                self.assertEqual((identity / "svg" / f"{variant}.svg").read_bytes(),
+                                 (root / "Brand/AppIcon/svg" / f"{variant}.svg").read_bytes())
+            self.assertIn("Brand/AppIcon/svg/color-light.svg", (root / "README.md").read_text())
+
+    def test_incomplete_identity_is_rejected_without_publishing_a_partial_brand(self):
+        import json
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory) / "source"
+            identity = root / "Brand/AppIcon"
+            identity.mkdir(parents=True)
+            (identity / "identity.json").write_text(json.dumps({
+                "app": {"slug": "nano-vim"}, "variants": ["color-light"]}))
+            bundle = Path(directory) / "release"
+            bundle.mkdir()
+            with self.assertRaises(FileNotFoundError):
+                PACKAGE.copy_identity_assets(root, bundle)
+            self.assertFalse((bundle / "Brand").exists())
+
+
 if __name__ == "__main__":
     unittest.main()

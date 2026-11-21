@@ -1,5 +1,7 @@
 # nano-vim
 
+<img src="Brand/AppIcon/svg/color-light.svg" width="96" height="96" alt="nano-vim"/>
+
 Terminálový editor, který zná Vim a hledí si svého. Od Jarabacksoft.
 
 **Čeština je hlavní a řídící jazyk projektu.** Anglický překlad je níže;
@@ -14,6 +16,13 @@ Viz [LICENSE](LICENSE), [licenční přehled](LICENSING.cs.md) a
 [oznámení třetích stran](THIRD_PARTY_NOTICES.txt). Pro distribuci binárky použijte
 `python3 scripts/package-release.py /private/tmp/nano-vim-release`.
 Autoritativní licenční text je anglický; český přehled je vysvětlení.
+
+### Identita
+
+Modrá příkazová šipka a kurzor vycházejí ze společné identity Jarabacksoft.
+SVG a záznam zdroje jsou v `Brand/AppIcon/`; distribuční balíček je přibaluje.
+Obnovení z checkoutu webu: `python3 ../jarabacksoft-web/scripts/install-app-icons.py --project .`.
+V terminálu se používá ikona terminálové aplikace.
 
 ### Instalace
 
@@ -262,6 +271,13 @@ See [LICENSE](LICENSE), the [licensing overview](LICENSING.en.md), and
 [third-party notices](THIRD_PARTY_NOTICES.txt). For binary redistribution use
 `python3 scripts/package-release.py /private/tmp/nano-vim-release`.
 The English license text is authoritative; the Czech overview is explanatory.
+
+### Identity
+
+The blue prompt arrow and cursor use the shared Jarabacksoft identity.
+`Brand/AppIcon/` contains the SVG variants and source receipt, included in release bundles.
+Refresh from the website checkout with `python3 ../jarabacksoft-web/scripts/install-app-icons.py --project .`.
+Terminal sessions use the terminal application's own icon.
 
 ### Installation
 

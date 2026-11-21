@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="icon-nano-vim-color-light-title">
+  <title id="icon-nano-vim-color-light-title">nano-vim — color-light</title>
+  <defs>
+    <linearGradient id="icon-nano-vim-color-light-base" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#3578ef"/><stop offset="1" stop-color="#174aaf"/></linearGradient>
+    <linearGradient id="icon-nano-vim-color-light-edge" x1="0" y1="0" x2=".6" y2="1"><stop stop-color="#fff" stop-opacity=".8"/><stop offset=".45" stop-color="#fff" stop-opacity=".04"/><stop offset="1" stop-color="#a3a9b6" stop-opacity=".4"/></linearGradient>
+    <linearGradient id="icon-nano-vim-color-light-glass" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#fff" stop-opacity=".2"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+    <filter id="icon-nano-vim-color-light-shadow" x="-.5" y="-.5" width="2" height="2"><feDropShadow dx="0" dy="5" stdDeviation="4" flood-color="#000" flood-opacity=".2"/></filter>
+  </defs>
+  <g id="icon-nano-vim-color-light-background">
+    <rect x="8" y="10" width="240" height="240" rx="57" fill="#174aaf"/>
+    <rect x="8" y="6" width="240" height="240" rx="57" fill="url(#icon-nano-vim-color-light-base)" stroke="#174aaf" stroke-width="1.5"/>
+    <rect x="10" y="8" width="236" height="236" rx="55" fill="none" stroke="url(#icon-nano-vim-color-light-edge)" stroke-width="2"/>
+  </g>
+  <g id="icon-nano-vim-color-light-material"><rect x="30" y="28" width="196" height="196" rx="42" fill="url(#icon-nano-vim-color-light-glass)"/><path d="M30 63C35 39 50 28 76 28H179" fill="none" stroke="#fff" stroke-opacity=".3" stroke-width="1.5" stroke-linecap="round"/></g>
+  <g id="icon-nano-vim-color-light-symbol" color="#ffffff" fill="none" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" filter="url(#icon-nano-vim-color-light-shadow)"><path d="M84 98L110 122L84 146"/><path d="M129 151H172"/></g>
+  
+</svg>

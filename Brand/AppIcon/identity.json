@@ -1,0 +1,30 @@
+{
+  "schema": 1,
+  "app": {
+    "slug": "nano-vim",
+    "name": "nano-vim",
+    "accent": "#3578ef",
+    "ink": "#174aaf"
+  },
+  "source": [
+    {
+      "path": "src/lib/app-icons.ts",
+      "sha256": "52e46feec3b91cc8e77980a63867210922f28dbce5bbafb4450b4f8aa52e4f82"
+    },
+    {
+      "path": "src/data/apps.ts",
+      "sha256": "3c02f50e936b5382405a1e575bc252fbf52dc5d5a8ac7a44b3a51824a040caed"
+    }
+  ],
+  "variants": [
+    "color-light",
+    "color-dark",
+    "badge-light",
+    "badge-dark"
+  ],
+  "surfaces": {
+    "macOS": "Rounded web artwork with transparent outer margin",
+    "iOS": "Opaque full-bleed background; the system applies the outer mask",
+    "web": "Original SVG variants, unchanged"
+  }
+}
